@@ -259,7 +259,8 @@ export default function ResultsDashboard({ onLogout }: { onLogout: () => void })
     doc.text("Chave: 8F9A-2B3C-4D5E-6F7G", 185, y + 11, { align: "right" });
     
     try {
-      const qrCodeData = await QRCode.toDataURL(`https://laboratorio-exemplo.com/validar/${exam.id}`, { margin: 0 });
+      const qrUrl = `https://medicocenterilheus.github.io/portal_resultados/?token=${exam.id}`;
+      const qrCodeData = await QRCode.toDataURL(qrUrl, { margin: 0 });
       doc.addImage(qrCodeData, "PNG", 155, y + 14, 15, 15);
     } catch (e) {
       console.error(e);
@@ -316,46 +317,7 @@ export default function ResultsDashboard({ onLogout }: { onLogout: () => void })
             <p><strong>Nascimento:</strong> {exam.nascimento}</p>
             <p><strong>Sexo:</strong> {exam.sexo}</p>
             <p className="col-span-1 sm:col-span-3"><strong>Documento (CPF):</strong> {exam.cpf}</p>
-            <p className="col-span-1 sm:col-span-3"><strong>Médico:</strong> {exam.medico}</p>
           </div>
-        </div>
-
-        <div className="mb-6">
-          <h3 className="text-xs font-bold uppercase border-b border-slate-300 pb-1 mb-2">2. Dados da Amostra e Metodologia</h3>
-          <div className="text-xs space-y-1">
-            <p><strong>Material:</strong> {exam.material}</p>
-            <p><strong>Condição:</strong> {exam.condicaoAmostra}</p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-1">
-              <p><strong>Coleta:</strong> {exam.dataColeta}</p>
-              <p><strong>Entrada:</strong> {exam.dataEntrada}</p>
-            </div>
-            <p><strong>Método:</strong> {exam.metodo}</p>
-          </div>
-        </div>
-
-        <div className="mb-6">
-          <h3 className="text-xs font-bold uppercase border-b border-slate-300 pb-1 mb-2">Sorologia para Herpes Simplex</h3>
-          <table className="w-full text-xs border-collapse">
-            <thead>
-              <tr className="bg-slate-100">
-                <th className="border p-1 text-left">Parâmetro</th>
-                <th className="border p-1 text-left">Resultado</th>
-                <th className="border p-1 text-left">Ref.</th>
-              </tr>
-            </thead>
-            <tbody>
-              {exam.itens.map((item, i) => (
-                <tr key={i}>
-                  <td className="border p-1">{item.parametro}</td>
-                  <td className="border p-1">
-                    <span className="font-bold">{item.resultado}</span><br />
-                    <span className="text-green-700 font-medium">{item.status}</span>
-                  </td>
-                  <td className="border p-1 whitespace-pre-line">{item.ref}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
         </div>
         
         <div className="text-[10px] text-slate-500 border-t pt-2 mt-8 text-center">
