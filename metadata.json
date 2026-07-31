@@ -1,0 +1,6 @@
+{
+  "name": "Portal de Resultados de Exames",
+  "description": "Portal para pacientes consultarem resultados de exames de ISTs de forma segura.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
