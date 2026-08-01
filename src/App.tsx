@@ -31,7 +31,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-800 p-4">
+    <div className="min-h-screen bg-slate-50 text-slate-800">
       {isAuthenticated ? (
         <ResultsDashboard onLogout={() => setIsAuthenticated(false)} />
       ) : (

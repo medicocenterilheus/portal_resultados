@@ -50,7 +50,7 @@ export default function ResultsDashboard({ onLogout }: { onLogout: () => void })
     doc.setTextColor(darkBlue[0], darkBlue[1], darkBlue[2]);
     doc.setFontSize(18);
     doc.setFont("helvetica", "bold");
-    doc.text("MEDICO CENTER LTDA", margin + 3, 22);
+    doc.text("MÉDICO CENTER", margin + 3, 22);
     
     doc.setTextColor(gray[0], gray[1], gray[2]);
     doc.setFontSize(8);
@@ -259,7 +259,7 @@ export default function ResultsDashboard({ onLogout }: { onLogout: () => void })
     doc.text("Chave: 8F9A-2B3C-4D5E-6F7G", 185, y + 11, { align: "right" });
     
     try {
-      const qrUrl = `https://medicocenterilheus.github.io/portal_resultados/?token=${exam.id}`;
+      const qrUrl = `${window.location.origin}/?token=${exam.id}`;
       const qrCodeData = await QRCode.toDataURL(qrUrl, { margin: 0 });
       doc.addImage(qrCodeData, "PNG", 155, y + 14, 15, 15);
     } catch (e) {
@@ -280,7 +280,7 @@ export default function ResultsDashboard({ onLogout }: { onLogout: () => void })
   };
 
   return (
-    <div className="max-w-4xl mx-auto mt-10 p-4 sm:p-8 bg-slate-50 min-h-screen">
+    <div className="max-w-4xl mx-auto pt-10 pb-10 p-4 sm:p-8 bg-slate-50 min-h-screen">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold tracking-tight text-slate-900">Meus Exames</h1>
         <button onClick={onLogout} className="p-2 px-4 bg-white border border-slate-200 text-slate-700 rounded-lg hover:bg-slate-100 transition-colors shadow-sm">
@@ -302,7 +302,7 @@ export default function ResultsDashboard({ onLogout }: { onLogout: () => void })
       {/* Visual Preview */}
       <div className="bg-white p-8 border border-slate-200 shadow-xl rounded-lg mx-auto max-w-2xl text-slate-900">
         <div className="border-b border-slate-300 pb-4 mb-4 text-center">
-          <h2 className="text-xl font-bold">{ "MEDICO CENTER LTDA" }</h2>
+          <h2 className="text-xl font-bold">{ "MÉDICO CENTER" }</h2>
           <p className="text-xs">CNPJ: 40.740.466/0001-48 | Praca Antonio Muniz, 73, Centro, Ilheus, BA - CEP 45653-210</p>
           <div className="flex justify-between mt-4 text-xs">
             <span>Protocolo (OS): {exam.id}</span>
