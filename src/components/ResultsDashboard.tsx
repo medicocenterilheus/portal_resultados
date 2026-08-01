@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { jsPDF } from "jspdf";
 import QRCode from "qrcode";
 
@@ -21,6 +22,15 @@ export default function ResultsDashboard({ onLogout }: { onLogout: () => void })
         { parametro: "Anticorpos IgM (Anti-HSV 1 e 2)", resultado: "0,42 Índice (S/CO)", status: "NÃO REAGENTE", ref: "Inferior a 0,90" }
     ]
   };
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('download') === 'true') {
+      setTimeout(() => {
+        downloadPDF();
+      }, 500);
+    }
+  }, []);
 
   const downloadPDF = async () => {
     const doc = new jsPDF();
@@ -259,7 +269,8 @@ export default function ResultsDashboard({ onLogout }: { onLogout: () => void })
     doc.text("Chave: 8F9A-2B3C-4D5E-6F7G", 185, y + 11, { align: "right" });
     
     try {
-      const qrUrl = `${window.location.origin}/?token=${exam.id}`;
+      const baseUrl = window.location.origin + window.location.pathname;
+      const qrUrl = `${baseUrl}?token=${exam.id}&download=true`;
       const qrCodeData = await QRCode.toDataURL(qrUrl, { margin: 0 });
       doc.addImage(qrCodeData, "PNG", 155, y + 14, 15, 15);
     } catch (e) {
