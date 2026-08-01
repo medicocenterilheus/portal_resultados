@@ -6,7 +6,7 @@ export default function ResultsDashboard({ onLogout }: { onLogout: () => void })
   const exam = {
     id: "2026.07.31-9988",
     name: "Sorologia para Herpes Simplex Vírus (HSV) TIPO 1 E 2",
-    dateEmissao: "31/07/2026 11:38",
+    dateEmissao: "31/07/2026 18:22",
     paciente: "Johnatan David Farias Oliveira",
     nascimento: "03/06/1996 (30 anos)",
     sexo: "Masculino",
@@ -14,8 +14,8 @@ export default function ResultsDashboard({ onLogout }: { onLogout: () => void })
     medico: "Dr. Gustavo Cunha Carvalho da Silva (CRM-BA 11182 / RQE 12122)",
     material: "Soro (Volume: 2,0 mL)",
     condicaoAmostra: "Adequada (Sem hemólise/lipemia)",
-    dataColeta: "30/07/2026 08:15",
-    dataEntrada: "30/07/2026 09:30",
+    dataColeta: "31/07/2026 08:15",
+    dataEntrada: "31/07/2026 09:30",
     metodo: "Imunoensaio Quimioluminescente de Micropartículas (CMIA)",
     itens: [
         { parametro: "Anticorpos IgG (Anti-HSV 1 e 2)", resultado: "0,15 Índice (S/CO)", status: "NÃO REAGENTE", ref: "Inferior a 0,90" },
